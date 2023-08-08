@@ -6,4 +6,4 @@ def uppercase(str):
             modified += chr(ord(c) - 32)
         else:
             modified += c
-    print(modified)
+    print(modified.format(str))
