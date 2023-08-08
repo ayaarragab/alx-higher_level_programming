@@ -1,3 +1,5 @@
 #!/bin/bash
-echo "Compiling main.py ..."
-python3 -m py_compile $PYFILE && mv __pycache__/main.cpython-*.pyc my_main.pyc
+
+pyfile=$PYFILE
+python3 -m py_compile "$pyfile"
+mv  __pycache__/${PYFILE%.py}.cpython-310.pyc ${PYFILE}c
