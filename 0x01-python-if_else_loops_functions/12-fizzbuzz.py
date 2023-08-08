@@ -11,6 +11,6 @@ def fizzbuzz():
             print('Buzz', end=" ")
             continue
         elif i % 5 == 0 and i % 3 == 0:
-            print('FizzBuz', end=" ")
+            print('FizzBuzz', end=" ")
             continue
         print(i, end=" ")
