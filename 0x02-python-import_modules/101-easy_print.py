@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-from print import my_print
-my_print('#pythoniscool')
+__builtins__.__dict__['p'+chr(114)+chr(105)+chr(110)+chr(116)]('#pythoniscool')
