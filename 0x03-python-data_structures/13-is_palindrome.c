@@ -45,19 +45,15 @@ int compare_nodes(listint_t *current, int current_n)
 		else
 			return (0);
 	}
-	else
+	while (i < current_n - 1)
 	{
-		while (i < current_n - 1)
-		{
-			trace = trace->next;
-			i++;
-		}
-
-		if (current->n == trace->n)
-			return (1);
-		else
-			return (0);
+		trace = trace->next;
+		i++;
 	}
+	if (current->n == trace->n)
+		return (1);
+	else
+		return (0);
 }
 
 /**
