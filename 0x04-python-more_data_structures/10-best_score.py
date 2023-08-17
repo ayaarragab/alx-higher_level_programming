@@ -3,9 +3,13 @@ def best_score(a_dictionary):
     if not a_dictionary:
         return None
     maxi = None
-    for key, val in a_dictionary.items():
-        maxi = key
+    for keyy, val in a_dictionary.items():
+        maxi = val
         break
-    for key, val in a_dictionary.items():
-        maxi = key if key > maxi else maxi
-    return maxi
+    for keyy, val in a_dictionary.items():
+        maxi = val if val > maxi else maxi
+    for key, vall in a_dictionary.items():
+        if vall == maxi:
+            return key
+        else:
+            continue
