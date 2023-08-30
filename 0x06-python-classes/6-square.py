@@ -45,11 +45,11 @@ class Square:
         return self.size * self.size
 
     def my_print(self):
-        pattern = '#' * self._size
-        spacePatter = ' ' * self._position[0]
+        pattern = '#' * self.size
+        spacePatter = ' ' * self.position[0]
         if self.size == 0:
             print()
-        for newline in range(self._position[1]):
+        for newline in range(self.position[1]):
             print()
         for i in range(self.size):
             if i == self.size:
