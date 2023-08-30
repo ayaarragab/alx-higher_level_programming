@@ -64,7 +64,7 @@ class Square:
         totalStr = ''
         if self.size == 0:
             if self.position[1] > 0:
-                for newline in range(self.position[1]):
+                for newline in range(self.position[1] - 1):
                     totalStr += '\n'
             return totalStr
         else:
