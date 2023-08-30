@@ -47,6 +47,20 @@ class Square:
     def my_print(self):
         pattern = '#' * self.size
         spacePatter = ' ' * self.position[0]
+        if self.size == 0:
+            print()
+        else:
+            if self.position[1] > 0:
+                for newline in range(self.position[1]):
+                    print()
+        for i in range(self.size):
+            if i == self.size:
+                print(spacePatter + pattern, end="")
+            print(spacePatter + pattern)
+
+    def __str__(self):
+        pattern = '#' * self.size
+        spacePatter = ' ' * self.position[0]
         totalStr = ''
         if self.size == 0:
             print()
@@ -55,12 +69,8 @@ class Square:
                 for newline in range(self.position[1]):
                     totalStr += '\n'
         for i in range(self.size):
-            if i == self.size:
+            if i == self.size - 1:
                 totalStr += (spacePatter + pattern)
             else:
                 totalStr += (spacePatter + pattern + '\n')
         return totalStr
-
-    def __str__(self):
-        mystring = self.my_print()
-        return mystring
