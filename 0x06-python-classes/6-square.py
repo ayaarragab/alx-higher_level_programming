@@ -49,7 +49,6 @@ class Square:
         spacePatter = ' ' * self.position[0]
         if self.size == 0:
             print()
-            pass
         for newline in range(self.position[1]):
             print()
         for i in range(self.size):
