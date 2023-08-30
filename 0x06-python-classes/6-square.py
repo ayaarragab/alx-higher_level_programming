@@ -49,8 +49,10 @@ class Square:
         spacePatter = ' ' * self.position[0]
         if self.size == 0:
             print()
-        for newline in range(self.position[1]):
-            print()
+        else:
+            if self.position[1] > 0:
+                for newline in range(self.position[1]):
+                    print()
         for i in range(self.size):
             if i == self.size:
                 print(spacePatter + pattern, end="")
