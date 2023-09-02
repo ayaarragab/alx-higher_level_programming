@@ -63,3 +63,10 @@ My name is Aya
 Traceback (most recent call last):
     ...
 TypeError: first_name must be a string
+
+
+>>> say_my_name("John", "")  #doctest: +NORMALIZE_WHITESPACE
+My name is John
+
+>>> say_my_name("Walter", "")  #doctest: +NORMALIZE_WHITESPACE
+My name is Walter
