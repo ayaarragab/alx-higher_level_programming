@@ -1,0 +1,42 @@
+testing print_square
+====================
+>>> print_square = __import__('4-print_square').print_square
+>>> print_square(4) #doctest: +NORMALIZE_WHITESPACE
+####
+####
+####
+####
+
+>>> print_square(10) #doctest: +NORMALIZE_WHITESPACE
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+>>> print_square(0)
+>>> print_square(None)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+
+>>> print_square("String") #doctest: +NORMALIZE_WHITESPACE
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+>>> print_square(-4.6)
+Traceback (most recent call last):
+    ...
+TypeError: size must be an integer
+
+>>> print_square(-4)
+Traceback (most recent call last):
+    ...
+ValueError: size must be >= 0
