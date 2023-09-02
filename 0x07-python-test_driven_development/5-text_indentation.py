@@ -10,10 +10,11 @@ def text_indentation(text):
     """
     newText = ""
     in_whitespace = False #tracker for whitespace after the (., ?, :)
-    if not text or not isinstance(text, str):
+    if text == None or not isinstance(text, str):
         raise TypeError('text must be a string')
     for c in text:
         if c == '.' or c == '?' or c == ':':
+            newText += c
             newText += "\n\n"
             in_whitespace = True
         elif c == ' ':
@@ -23,4 +24,7 @@ def text_indentation(text):
         else:
             in_whitespace = False
             newText += c
-    print(newText)
+    if newText:
+        print(newText)
+    else:
+        pass
