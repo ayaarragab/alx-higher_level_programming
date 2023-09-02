@@ -1,16 +1,19 @@
 #!/usr/bin/python3
 '''
-this module contains a function that prints a 
+this module contains a function that prints a
 text with 2 new lines
 after each of these characters: ., ? and :
 '''
+
+
 def text_indentation(text):
     """
     text_indentation(text): for each (., :, ?) => 2 newlines
     """
+
     newText = ""
-    in_whitespace = False #tracker for whitespace after the (., ?, :)
-    if text == None or not isinstance(text, str):
+    in_whitespace = False   # tracker for whitespace after the (., ?, :)
+    if text is None or not isinstance(text, str):
         raise TypeError('text must be a string')
     for c in text:
         if c == '.' or c == '?' or c == ':':
