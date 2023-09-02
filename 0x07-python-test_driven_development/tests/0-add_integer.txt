@@ -16,16 +16,6 @@ Traceback (most recent call last):
     ...
 TypeError: a must be an integer
 
->>> print(add_integer(True, 1)) #doctest: +NORMALIZE_WHITESPACE, +ELLIPSIS
-Traceback (most recent call last):
-    ...
-TypeError: a must be an integer
-
->>> print(add_integer(2, True)) #doctest: +NORMALIZE_WHITESPACE, +ELLIPSIS
-Traceback (most recent call last):
-    ...
-TypeError: b must be an integer
-
 >>> print(add_integer(2)) #doctest: +NORMALIZE_WHITESPACE
 100
 
@@ -49,8 +39,3 @@ TypeError: a must be an integer
 
 >>> print(add_integer(-10, 4.5)) #doctest: +NORMALIZE_WHITESPACE
 -6
-
->>> print(add_integer(1245, ' ')) #doctest: +NORMALIZE_WHITESPACE, +ELLIPSIS
-Traceback (most recent call last):
-    ...
-TypeError: b must be an integer

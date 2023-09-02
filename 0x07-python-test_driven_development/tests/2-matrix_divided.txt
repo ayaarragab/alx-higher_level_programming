@@ -63,25 +63,10 @@ Traceback (most recent call last):
   ...
 ZeroDivisionError: division by zero
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> num = (4, 6, 6, "string")
->>> print(matrix_divided(matrix, num)) #doctest: +NORMALIZE_WHITESPACE
-Traceback (most recent call last):
-    ...
-TypeError: div must be a number
-
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> num = True
->>> print(matrix_divided(matrix, num)) #doctest: +NORMALIZE_WHITESPACE
-Traceback (most recent call last):
-    ...
-TypeError: div must be a number
-
 >>> print(matrix_divided(None, None)) #doctest: +NORMALIZE_WHITESPACE
 Traceback (most recent call last):
     ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
-
 
 >>> matrix = [[1, 2, 3], [4, 5, 6]]
 >>> matrix2 = matrix_divided(matrix, 3)

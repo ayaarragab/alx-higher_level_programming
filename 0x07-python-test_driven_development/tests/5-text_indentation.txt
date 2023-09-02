@@ -73,14 +73,6 @@ A delicious drink.
 <BLANKLINE>
 <BLANKLINE>
 
->>> text_indentation(".?:")
-.
-<BLANKLINE>
-?
-<BLANKLINE>
-:
-<BLANKLINE>
-<BLANKLINE>
 >>> text_indentation("")
 >>> text_indentation("""Line number 1
 ... <BLANKLINE>

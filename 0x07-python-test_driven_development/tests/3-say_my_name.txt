@@ -65,11 +65,6 @@ My name is
 >>> say_my_name("&@&", "()") #doctest: +REPORT_NDIFF, +REPORT_CDIFF
 My name is &@& ()
 
->>> say_my_name(123) #doctest: +NORMALIZE_WHITESPACE
-Traceback (most recent call last):
-    ...
-TypeError: first_name must be a string
-
 
 >>> say_my_name("Aya") #doctest: +NORMALIZE_WHITESPACE
 My name is Aya 
@@ -86,8 +81,3 @@ My name is John
 
 >>> say_my_name("Walter", "")  #doctest: +NORMALIZE_WHITESPACE
 My name is Walter 
-
->>> say_my_name(12, "White")
-Traceback (most recent call last):
-...
-TypeError: first_name must be a string

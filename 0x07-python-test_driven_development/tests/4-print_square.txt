@@ -44,3 +44,5 @@ ValueError: size must be >= 0
 >>> print_square(2.35)
 ##
 ##
+>>> print_square(1)
+#
