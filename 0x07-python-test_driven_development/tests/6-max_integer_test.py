@@ -90,6 +90,14 @@ class TestMaxInteger(unittest.TestCase):
                                      43, 23, 900, 78, 465, -10000,
                                      490]), 923840)
 
+    def test_list_of_strings(self):
+        """
+        This tests whether the function gives correct
+        output for list of strings or not
+        """
+        self.assertEqual(max_integer(["Belal", "Youssef",
+                                     "Doaa", "Aya"]), "Youssef")
+
 
 if __name__ == '__main__':
     unittest.main()
