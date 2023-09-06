@@ -66,11 +66,9 @@ Café au lait:
 <BLANKLINE>
 A delicious drink.
 <BLANKLINE>
-<BLANKLINE>
 
 >>> text_indentation(":") # doctest: +REPORT_NDIFF
 :
-<BLANKLINE>
 <BLANKLINE>
 
 >>> text_indentation("")

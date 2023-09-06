@@ -28,6 +28,6 @@ def text_indentation(text):
             in_whitespace = False
             newText += c
     if newText:
-        print(newText)
+        print(newText, end="")
     else:
         pass
