@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include </usr/include/python3.10/Python.h>
-#include </usr/include/python3.10/object.h>
+#include <Python.h>
+#include <listobject.h>
 /**
  * print_python_list_info - prints information about a python list
  * @list: python object of class list
