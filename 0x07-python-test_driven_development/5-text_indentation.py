@@ -30,4 +30,5 @@ def text_indentation(text):
     if newText:
         print(newText, end="")
     else:
-        pass
+        newText = ""
+        print(newText, end="")

@@ -81,4 +81,3 @@ Line number 1
 This is another line
 Once again
 >>> print(text_indentation(""))
-None

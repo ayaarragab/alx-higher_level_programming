@@ -98,6 +98,17 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer(["Belal", "Youssef",
                                      "Doaa", "Aya"]), "Youssef")
 
+    def test_for_one_element(self):
+        """This tests whether the function gives correct
+        output for for_one_element list"""
+        self.assertEqual(max_integer([3]), 3)
+
+    def test_max_beg(self):
+        """max
+        at
+        begining"""
+        self.assertEqual(max_integer([5, 2, 1]), 5)
+
 
 if __name__ == '__main__':
     unittest.main()
