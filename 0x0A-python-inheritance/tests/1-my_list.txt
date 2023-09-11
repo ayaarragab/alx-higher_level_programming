@@ -1,4 +1,8 @@
 >>> MyList = __import__('1-my_list').MyList
+>>> print(len(__import__('1-my_list').__doc__) > 1)
+True
+>>> print(len(__import__('1-my_list').MyList.__doc__) > 1)
+True
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
@@ -33,3 +37,4 @@
 >>> my_list.append(1)
 >>> my_list.print_sorted()
 [1]
+>>>
