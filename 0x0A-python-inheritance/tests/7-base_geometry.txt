@@ -1,6 +1,10 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> print((len(BaseGeometry.__doc__) > 1))
 True
+>>> print((len(BaseGeometry.area.__doc__) > 1))
+True
+>>> print((len(BaseGeometry.integer_validator.__doc__) > 1))
+True
 >>> print((len(__import__('7-base_geometry').__doc__) > 1))
 True
 >>> bg = BaseGeometry()
