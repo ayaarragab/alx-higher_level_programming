@@ -25,3 +25,4 @@ for line in sys.stdin:
     if statusCode in statusCodeDict.keys():
         statusCodeDict[statusCode] += 1
     count += 1
+sys.stdin.flush()
