@@ -22,7 +22,7 @@ class Student:
         """
         myDic = dict()
         allDic = self.__dict__
-        if attrs != []:
+        if attrs:
             for item in attrs:
                 for key in list(allDic.keys()):
                     if item is key:
