@@ -4,7 +4,7 @@ This module contains class student
 """
 
 
-class student:
+class Student:
     """
     student class
     """
