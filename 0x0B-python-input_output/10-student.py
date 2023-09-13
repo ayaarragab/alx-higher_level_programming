@@ -30,4 +30,6 @@ class Student:
                     else:
                         continue
             return (myDic)
+        elif attrs == []:
+            return myDic
         return (allDic)
