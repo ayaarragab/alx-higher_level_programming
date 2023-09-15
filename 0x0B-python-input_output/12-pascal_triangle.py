@@ -10,7 +10,7 @@ def pascal_triangle(n):
     representing the Pascal triangle of n
     """
 
-    lists = list() * n
+    lists = [] * n
     for i in range(n):
         lists.append([0]*i)   # Fill list of lists by n lists, from 1 to n
     # each one has length of its order
