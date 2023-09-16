@@ -68,8 +68,8 @@ class Rectangle(Base):
         """
         if not type(x) is int:
             raise TypeError('x must be an integer')
-        if x <= 0:
-            raise ValueError('x must be > 0')
+        if x < 0:
+            raise ValueError('x must be >= 0')
         self.__x = x
 
     @property
@@ -86,6 +86,56 @@ class Rectangle(Base):
         """
         if not type(y) is int:
             raise TypeError('y must be an integer')
-        if y <= 0:
-            raise ValueError('y must be > 0')
+        if y < 0:
+            raise ValueError('y must be >= 0')
         self.__y = y
+
+    def area(self):
+        """
+        area
+        """
+        return self.__height * self.__width
+
+    def display(self):
+        """
+        rectangle of #
+        """
+        pattern = ""
+        for i in range(self.__x):
+            pattern += " "
+        pattern += '#' * self.__width
+        for j in range(self.__y):
+            print()
+        for k in range(self.__height):
+            print(pattern)
+
+    def __str__(self):
+        """
+        str special method
+        """
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+
+    def update(self, *args, **kwargs):
+        """
+        Update the class Rectangle by adding this method:
+        that assigns an argument to each attribute
+        
+        args: arbitary positional arguments
+        
+        kwargs: arbitary keyword arguemts
+        
+        """
+        if args:
+            if len(args) >= 1:
+                self.id = args[0]
+            if len(args) >= 2:
+                self.width = args[1]
+            if len(args) >= 3:
+                self.height = args[2]
+            if len(args) >= 4:
+                self.x = args[3]
+            if len(args) >= 5:
+                self.y = args[4]
+            pass
+        for key, value in kwargs.items():
+            setattr(self, key, value)
