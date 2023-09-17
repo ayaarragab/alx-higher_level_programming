@@ -139,3 +139,14 @@ class Rectangle(Base):
             pass
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Dictionary representation
+        """
+        mydict = dict()
+        mydict["id"] = self.id
+        mydict["x"] = self.x
+        mydict["y"] = self.y
+        mydict["width"] = self.width
+        mydict["height"] = self.height
+        return mydict

@@ -57,3 +57,11 @@ class Square(Rectangle):
             pass
         for key, value in kwargs.items():
             setattr(self, key, value)
+
+    def to_dictionary(self):
+        mydict = dict()
+        mydict["id"] = self.id
+        mydict["x"] = self.x
+        mydict["y"] = self.y
+        mydict["size"] = self.size
+        return mydict
