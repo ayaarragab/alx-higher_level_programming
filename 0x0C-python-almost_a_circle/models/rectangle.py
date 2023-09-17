@@ -2,7 +2,10 @@
 """
 Rectangle class module
 """
+
+
 from models.base import Base
+
 
 class Rectangle(Base):
     """
@@ -113,17 +116,18 @@ class Rectangle(Base):
         """
         str special method
         """
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - \
+        {self.__width}/{self.__height}"
 
     def update(self, *args, **kwargs):
         """
         Update the class Rectangle by adding this method:
         that assigns an argument to each attribute
-        
+
         args: arbitary positional arguments
-        
+
         kwargs: arbitary keyword arguemts
-        
+
         """
         if args:
             if len(args) >= 1:
