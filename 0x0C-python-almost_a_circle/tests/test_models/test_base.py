@@ -302,5 +302,15 @@ class test_save_to_file(unittest.TestCase):
                 content = f.read()
         self.assertEqual(content, '[]')
 
+class test_from_json_string(unittest.TestCase):
+    """Testing from json file function"""
+    def test_normal_2_dictsquares_for_type(self):
+        """Test for 2 square dictionaries
+        """
+        square = Square(1, 4, 5, 7).to_dictionary()
+        square2 = Square(2, 5, 6, 10).to_dictionary()
+        json_String = Base.to_json_string([square, square2])
+        self.assertEqual(len(Base.from_json_string(json_String)[0]), 10)
+
 if __name__ == '__main__':
     unittest.TestCase()
