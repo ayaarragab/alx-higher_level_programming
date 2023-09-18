@@ -117,7 +117,7 @@ class Rectangle(Base):
         str special method
         """
         strrr = (f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - "
-                f"{self.__width}/{self.__height}")
+                 f"{self.__width}/{self.__height}")
         return strrr
 
     def update(self, *args, **kwargs):

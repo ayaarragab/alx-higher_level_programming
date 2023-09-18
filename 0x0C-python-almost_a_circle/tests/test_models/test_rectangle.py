@@ -17,3 +17,13 @@ import os
 
 """testing module class for Rectangle
 """
+
+
+class test_pycodestyle(unittest.TestCase):
+    "test that we conform to PEP-8"
+    def test_checking(self):
+        style = pycodestyle.StyleGuide(quit=True)
+        result = style.check_files(['models/rectangle.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
+        print(result)
