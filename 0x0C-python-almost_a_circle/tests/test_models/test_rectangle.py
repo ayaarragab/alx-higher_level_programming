@@ -8,6 +8,8 @@ import unittest
 from models.rectangle import Rectangle
 from models.square import Square
 import os
+from io import StringIO
+from unittest.mock import patch
 
 # Raises
 # Make test fails till it passes
@@ -274,6 +276,343 @@ class test_width(unittest.TestCase):
             ValueError, msg='ValueError: width must be > 0'
         ):
             obj = Rectangle(0, 20, 30, 40, 50)
+
+    def test_different_type_None(self):
+        """Basic testing
+        """
+        with self.assertRaises(
+            TypeError, msg='width must be an integer'
+        ):
+            obj = Rectangle(None, 20, 30, 40, 50)
+
+
+class test_height(unittest.TestCase):
+    """Testing height getter
+    """
+    def test_basic(self):
+        """Basic testing
+        """
+        obj = Rectangle(10, 20, 30, 40, 50)
+        self.assertEqual(obj.height, 20)
+
+    def test_negative_number(self):
+        """Testing with a negative value
+        """
+        with self.assertRaises(
+            ValueError, msg='ValueError: height must be > 0'
+        ):
+            obj = Rectangle(10, -20, 30, 40, 50)
+
+    def test_different_type_float(self):
+        """Testing with a float value
+        """
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, 20.5, 30, 40, 50)
+
+    def test_different_type_str(self):
+        """Testing with a string value
+        """
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, "str", 30, 40, 50)
+
+    def test_different_type_bool(self):
+        """Testing with a boolean value
+        """
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, True, 30, 40, 50)
+
+    def test_different_type_iteratives(self):
+        """Testing with iterable types
+        """
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, [20.4], 30, 40, 50)
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, (20.4, 9), 30, 40, 50)
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, {20.4, 9}, 30, 40, 50)
+
+    def test_for_zero(self):
+        """Testing with zero value
+        """
+        with self.assertRaises(
+            ValueError, msg='ValueError: height must be > 0'
+        ):
+            obj = Rectangle(10, 0, 30, 40, 50)
+
+    def test_different_type_None(self):
+        """Testing with None
+        """
+        with self.assertRaises(
+            TypeError, msg='height must be an integer'
+        ):
+            obj = Rectangle(10, None, 30, 40, 50)
+
+
+class test_x(unittest.TestCase):
+    """Testing x getter
+    """
+    def test_basic(self):
+        """Basic testing
+        """
+        obj = Rectangle(10, 20, 30, 40, 50)
+        self.assertEqual(obj.x, 30)
+
+    def test_negative_number(self):
+        """Testing with a negative value
+        """
+        with self.assertRaises(
+            ValueError, msg='ValueError: x must be >= 0'
+        ):
+            obj = Rectangle(10, 20, -30, 40, 50)
+
+    def test_different_type_float(self):
+        """Testing with a float value
+        """
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30.5, 40, 50)
+
+    def test_different_type_str(self):
+        """Testing with a string value
+        """
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, "str", 40, 50)
+
+    def test_different_type_bool(self):
+        """Testing with a boolean value
+        """
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, True, 40, 50)
+
+    def test_different_type_iteratives(self):
+        """Testing with iterable types
+        """
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, [30.4], 40, 50)
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, (30.4, 9), 40, 50)
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, {30.4, 9}, 40, 50)
+
+    def test_different_type_None(self):
+        """Testing with None
+        """
+        with self.assertRaises(
+            TypeError, msg='x must be an integer'
+        ):
+            obj = Rectangle(10, 20, None, 40, 50)
+
+
+class test_y(unittest.TestCase):
+    """Testing y getter
+    """
+    def test_basic(self):
+        """Basic testing
+        """
+        obj = Rectangle(10, 20, 30, 40, 50)
+        self.assertEqual(obj.y, 40)
+
+    def test_negative_number(self):
+        """Testing with a negative value
+        """
+        with self.assertRaises(
+            ValueError, msg='ValueError: y must be >= 0'
+        ):
+            obj = Rectangle(10, 20, 30, -40, 50)
+
+    def test_different_type_float(self):
+        """Testing with a float value
+        """
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, 40.5, 50)
+
+    def test_different_type_str(self):
+        """Testing with a string value
+        """
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, "str", 50)
+
+    def test_different_type_bool(self):
+        """Testing with a boolean value
+        """
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, True, 50)
+
+    def test_different_type_iteratives(self):
+        """Testing with iterable types
+        """
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, [40.4], 50)
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, (40.4, 9), 50)
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, {40.4, 9}, 50)
+
+    def test_different_type_None(self):
+        """Testing with None
+        """
+        with self.assertRaises(
+            TypeError, msg='y must be an integer'
+        ):
+            obj = Rectangle(10, 20, 30, None, 50)
+
+
+class test_area(unittest.TestCase):
+    """Test cases for area
+    """
+    def test_basic(self):
+        """Basic testing
+        """
+        rec = Rectangle(4, 9, 10, 11, 9)
+        self.assertEqual(rec.area(), 36)
+
+
+class test_display(unittest.TestCase):
+    """ Tests display function
+    """
+    def test_printed_string_only_w_h(self):
+        """ Tests display function
+        """
+        obj = Rectangle(4, 2)
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            obj.display()
+            printed_output = mock_stdout.getvalue().strip()
+        pattern = '####\n####'
+        self.assertEqual(printed_output, pattern)
+
+    def test_printed_string_xy(self):
+        """ Tests display function with x and y values
+        """
+        obj = Rectangle(4, 2, 1, 1)  # Width=4, Height=2, x=1, y=1
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            obj.display()
+            printed_output = mock_stdout.getvalue()
+        pattern = '\n ####\n ####\n'
+        self.assertEqual(printed_output, pattern)
+
+    def test_printed_string_y(self):
+        """ Tests display function with x and y values
+        """
+        obj = Rectangle(4, 2, 0, 1)  # Width=4, Height=2, x=1, y=1
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            obj.display()
+            printed_output = mock_stdout.getvalue()
+        pattern = '\n####\n####\n'
+        self.assertEqual(printed_output, pattern)
+
+    def test_printed_string_x(self):
+        """ Tests display function with x and y values
+        """
+        obj = Rectangle(4, 2, 1, 0)
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            obj.display()
+            printed_output = mock_stdout.getvalue()
+        pattern = ' ####\n ####\n'
+        self.assertEqual(printed_output, pattern)
+
+
+class test_string_method(unittest.TestCase):
+    """Testing __str__
+    """
+    def test_str_method(self):
+        """ Tests the __str__ method
+        """
+        obj = Rectangle(4, 2, 1, 1, 1)
+        expected_output = "[Rectangle] (1) 1/1 - 4/2"
+        self.assertEqual(str(obj), expected_output)
+
+
+class test_update(unittest.TestCase):
+
+    def test_update_args(self):
+        """ Tests update method with positional arguments
+        """
+        obj = Rectangle(4, 2, 1, 1, 1)
+        obj.update(2, 3, 4, 5, 6)
+        self.assertEqual(obj.id, 2)
+        self.assertEqual(obj.width, 3)
+        self.assertEqual(obj.height, 4)
+        self.assertEqual(obj.x, 5)
+        self.assertEqual(obj.y, 6)
+
+    def test_update_kwargs(self):
+        """ Tests update method with keyword arguments
+        """
+        obj = Rectangle(4, 2, 1, 1, 1)
+        obj.update(id=2, width=3, height=4, x=5, y=6)
+        self.assertEqual(obj.id, 2)
+        self.assertEqual(obj.width, 3)
+        self.assertEqual(obj.height, 4)
+        self.assertEqual(obj.x, 5)
+        self.assertEqual(obj.y, 6)
+
+    def test_update_mix_args_kwargs(self):
+        """ Tests update method with a mix of args and kwargs
+        """
+        obj = Rectangle(4, 2, 1, 1, 1)
+        obj.update(2, height=4, y=6)
+        self.assertEqual(obj.id, 2)
+        self.assertEqual(obj.width, 4)
+        self.assertEqual(obj.height, 4)
+        self.assertEqual(obj.x, 1)
+        self.assertEqual(obj.y, 6)
+
+    def test_update_no_args_kwargs(self):
+        """ Tests update method with no args or kwargs
+        """
+        obj = Rectangle(4, 2, 1, 1, 1)
+        obj.update()
+        self.assertEqual(obj.id, 1)
+        self.assertEqual(obj.width, 4)
+        self.assertEqual(obj.height, 2)
+        self.assertEqual(obj.x, 1)
+        self.assertEqual(obj.y, 1)
+
+    def test_update_args_overflow(self):
+        """ Tests update method with too many positional arguments
+        """
+        obj = Rectangle(4, 2, 1, 1, 1)
+        obj.update(2, 3, 4, 5, 6, 7)
+        self.assertEqual(obj.id, 2)
+        self.assertEqual(obj.width, 3)
+        self.assertEqual(obj.height, 4)
+        self.assertEqual(obj.x, 5)
+        self.assertEqual(obj.y, 6)
 
 
 if __name__ == '__main__':
