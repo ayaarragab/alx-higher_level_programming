@@ -45,6 +45,8 @@ class Square(Rectangle):
         return super().display()
 
     def update(self, *args, **kwargs):
+        """Update
+        """
         if args:
             if len(args) >= 1:
                 self.id = args[0]
@@ -59,6 +61,8 @@ class Square(Rectangle):
             setattr(self, key, value)
 
     def to_dictionary(self):
+        """to_dictionary
+        """
         mydict = dict()
         mydict["id"] = self.id
         mydict["x"] = self.x

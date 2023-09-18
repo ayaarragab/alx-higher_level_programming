@@ -40,7 +40,6 @@ class test_documentations(unittest.TestCase):
         """
         with open('models/base.py', 'r', encoding="UTF-8") as f:
             line = f.readline()
-            print(line)
             self.assertEqual('#!/usr/bin/python3' in line, True)
 
     def test_module_doc(self):
@@ -253,12 +252,70 @@ class test_save_to_file(unittest.TestCase):
     """Test save_to_file function
     """
 
+    def test_one_Sq(self):
+        sq1 = Square(2, 3, 5)
+        listOfObjs = [sq1]
+        listOfObjs[0].__class__.save_to_file(listOfObjs)
+        TrueFalse = os.path.exists(f'{listOfObjs[0].__class__.__name__}.json')
+        self.assertTrue(TrueFalse)
+
+    def test_one_Sq_len(self):
+        sq1 = Square(2, 3, 5)
+        listOfObjs = [sq1]
+        listOfObjs[0].__class__.save_to_file(listOfObjs)
+        filename = f'{listOfObjs[0].__class__.__name__}.json'
+        with open(filename, 'r', encoding="UTF-8") as f:
+            content = f.read()
+            self.assertEqual(len(content), 39)
+
+    def test_for_one_rec(self):
+        """test_for_Normal_list
+        """
+        Rec1 = Rectangle(2, 3, 5)
+        listOfObjs = [Rec1]
+        listOfObjs[0].__class__.save_to_file(listOfObjs)
+        TrueFalse = os.path.exists(f'{listOfObjs[0].__class__.__name__}.json')
+        self.assertTrue(TrueFalse)
+
+    def test_for_one_rec_len(self):
+        """test_for_Normal_list
+        """
+        Rec1 = Rectangle(2, 3, 5)
+        listOfObjs = [Rec1]
+        listOfObjs[0].__class__.save_to_file(listOfObjs)
+        filename = f'{listOfObjs[0].__class__.__name__}.json'
+        with open(filename, 'r', encoding="UTF-8") as f:
+            content = f.read()
+            self.assertEqual(len(content), 53)
+
     def test_for_2Squares_list(self):
         """test_for_Normal_list
         """
         sq1 = Square(2, 3, 5)
         sq2 = Square(4, 10, 1)
         listOfObjs = [sq1, sq2]
+        listOfObjs[0].__class__.save_to_file(listOfObjs)
+        TrueFalse = os.path.exists(f'{listOfObjs[0].__class__.__name__}.json')
+        self.assertTrue(TrueFalse)
+
+    def test_for_2Squares_list_len(self):
+        """test_for_Normal_list
+        """
+        sq1 = Square(2, 3, 5)
+        sq2 = Square(4, 10, 1)
+        listOfObjs = [sq1, sq2]
+        listOfObjs[0].__class__.save_to_file(listOfObjs)
+        filename = f'{listOfObjs[0].__class__.__name__}.json'
+        with open(filename, 'r', encoding="UTF-8") as f:
+            content = f.read()
+            self.assertEqual(len(content), 79)     
+
+    def test_for_2Rectangle_list(self):
+        """test_for_Normal_list
+        """
+        Rec1 = Rectangle(2, 3, 5)
+        Rec2 = Rectangle(4, 10, 1)
+        listOfObjs = [Rec1, Rec2]
         listOfObjs[0].__class__.save_to_file(listOfObjs)
         TrueFalse = os.path.exists(f'{listOfObjs[0].__class__.__name__}.json')
         self.assertTrue(TrueFalse)
@@ -270,8 +327,10 @@ class test_save_to_file(unittest.TestCase):
         Rec2 = Rectangle(4, 10, 1)
         listOfObjs = [Rec1, Rec2]
         listOfObjs[0].__class__.save_to_file(listOfObjs)
-        TrueFalse = os.path.exists(f'{listOfObjs[0].__class__.__name__}.json')
-        self.assertTrue(TrueFalse)
+        filename = f'{listOfObjs[0].__class__.__name__}.json'
+        with open(filename, 'r', encoding="UTF-8") as f:
+            content = f.read()
+            self.assertEqual(len(content), 107)
 
     def test_for_right_content(self):
         """Make sure that the file has
@@ -302,15 +361,66 @@ class test_save_to_file(unittest.TestCase):
                 content = f.read()
         self.assertEqual(content, '[]')
 
+
 class test_from_json_string(unittest.TestCase):
-    """Testing from json file function"""
-    def test_normal_2_dictsquares_for_type(self):
-        """Test for 2 square dictionaries
+    """Testing from json file function
+    """
+    def test_square_one(self):
+        """test_square_one
         """
-        square = Square(1, 4, 5, 7).to_dictionary()
-        square2 = Square(2, 5, 6, 10).to_dictionary()
-        json_String = Base.to_json_string([square, square2])
-        self.assertEqual(len(Base.from_json_string(json_String)[0]), 10)
+        json_str = Base.to_json_string([{'size': 9, 'id': 1, 'x': 1, 'y': 0}])
+        self.assertEqual(len(Base.from_json_string(json_str)[0]), 4)
+        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
+
+    def test_rectangle_one(self):
+        """test_rectangle_one
+        """
+        json_str = Base.to_json_string([{'size': 9, 'id': 1, 'x': 1, 'y': 0}])
+        self.assertEqual(len(Base.from_json_string(json_str)[0]), 4)
+        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
+
+    def test_square_two(self):
+        """test_square_two
+        """
+        json_str = Base.to_json_string([{'size': 9, 'id': 1, 'x': 1, 'y': 0},
+                                        {'size': 10, 'id': 12, 'x': 1, 'y': 0}])
+        self.assertEqual(len(Base.from_json_string(json_str)[0]), 4)
+        self.assertEqual(len(Base.from_json_string(json_str)[1]), 4)
+        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
+        self.assertEqual(type(Base.from_json_string(json_str)[1]).__name__, 'dict')
+
+    def test_rectangle_two(self):
+        """test_square_two
+        """
+        json_str = Base.to_json_string([{'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0},
+                                        {'weight': 10, 'width': 9, 'id': 12, 'x': 1, 'y': 0}])
+        self.assertEqual(len(Base.from_json_string(json_str)[0]), 5)
+        self.assertEqual(len(Base.from_json_string(json_str)[1]), 5)
+        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
+        self.assertEqual(type(Base.from_json_string(json_str)[1]).__name__, 'dict')
+
+    def test_for_empty_string(self):
+        """Tests for empty string
+        """
+        self.assertEqual(Base.from_json_string(''), [])
+
+    def test_for_none(self):
+        """Tests for none
+        """
+        self.assertEqual(Base.from_json_string(None), [])
+
+
+class test_create(unittest.TestCase):
+    """Test create method
+    """
+    def test_by_one_dict_rectangle(self):
+        """Test for rectangle dict
+        """
+        rec1 = {'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0}
+        rec_obj = Rectangle(10, 9, 1, 0, 1)
+        dict1 = Rectangle.create(**rec1).to_dictionary()
+        dict2 = rec_obj.to_dictionary()
+        self.assertEqual(dict1, dict2)
 
 if __name__ == '__main__':
     unittest.TestCase()

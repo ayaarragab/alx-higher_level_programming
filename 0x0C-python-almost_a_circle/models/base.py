@@ -51,9 +51,9 @@ class Base:
     def from_json_string(json_string):
         """returns the list of the JSON string representation json_string
         """
-        if json_string and json_string is not []:
+        if json_string and json_string is not None or "":
             return json.loads(json_string)
-        return "[]"
+        return []
 
     @classmethod
     def create(cls, **dictionary):
