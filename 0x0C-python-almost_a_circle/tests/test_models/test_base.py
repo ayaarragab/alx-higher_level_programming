@@ -3,13 +3,10 @@
 This is the testin  for the base model class
 """
 import pycodestyle
-import io   # test display
-from pycodestyle import Checker
 from models.base import Base
 import unittest
 from models.rectangle import Rectangle
 from models.square import Square
-import sys
 import os
 
 # Raises
@@ -308,7 +305,7 @@ class test_save_to_file(unittest.TestCase):
         filename = f'{listOfObjs[0].__class__.__name__}.json'
         with open(filename, 'r', encoding="UTF-8") as f:
             content = f.read()
-            self.assertEqual(len(content), 79)     
+            self.assertEqual(len(content), 79)
 
     def test_for_2Rectangle_list(self):
         """test_for_Normal_list
@@ -370,34 +367,47 @@ class test_from_json_string(unittest.TestCase):
         """
         json_str = Base.to_json_string([{'size': 9, 'id': 1, 'x': 1, 'y': 0}])
         self.assertEqual(len(Base.from_json_string(json_str)[0]), 4)
-        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
+        self.assertEqual(
+            type(Base.from_json_string(json_str)[0]).__name__, 'dict'
+        )
 
     def test_rectangle_one(self):
         """test_rectangle_one
         """
         json_str = Base.to_json_string([{'size': 9, 'id': 1, 'x': 1, 'y': 0}])
         self.assertEqual(len(Base.from_json_string(json_str)[0]), 4)
-        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
+        self.assertEqual(
+            type(Base.from_json_string(json_str)[0]).__name__, 'dict'
+        )
 
     def test_square_two(self):
         """test_square_two
         """
-        json_str = Base.to_json_string([{'size': 9, 'id': 1, 'x': 1, 'y': 0},
-                                        {'size': 10, 'id': 12, 'x': 1, 'y': 0}])
+        json_str = Base.to_json_string(
+            [{'size': 9, 'id': 1, 'x': 1, 'y': 0},
+             {'size': 10, 'id': 12, 'x': 1, 'y': 0}])
         self.assertEqual(len(Base.from_json_string(json_str)[0]), 4)
         self.assertEqual(len(Base.from_json_string(json_str)[1]), 4)
-        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
-        self.assertEqual(type(Base.from_json_string(json_str)[1]).__name__, 'dict')
+        self.assertEqual(
+            type(Base.from_json_string(json_str)[0]).__name__, 'dict'
+        )
+        self.assertEqual(
+            type(Base.from_json_string(json_str)[1]).__name__, 'dict'
+        )
 
     def test_rectangle_two(self):
         """test_square_two
         """
-        json_str = Base.to_json_string([{'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0},
-                                        {'weight': 10, 'width': 9, 'id': 12, 'x': 1, 'y': 0}])
+        json_str = Base.to_json_string(
+            [{'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0},
+             {'weight': 10, 'width': 9, 'id': 12, 'x': 1, 'y': 0}])
         self.assertEqual(len(Base.from_json_string(json_str)[0]), 5)
         self.assertEqual(len(Base.from_json_string(json_str)[1]), 5)
-        self.assertEqual(type(Base.from_json_string(json_str)[0]).__name__, 'dict')
-        self.assertEqual(type(Base.from_json_string(json_str)[1]).__name__, 'dict')
+        self.assertEqual(type(
+            Base.from_json_string(json_str)[0]
+            ).__name__, 'dict')
+        self.assertEqual(
+            type(Base.from_json_string(json_str)[1]).__name__, 'dict')
 
     def test_for_empty_string(self):
         """Tests for empty string
@@ -413,7 +423,7 @@ class test_from_json_string(unittest.TestCase):
 class test_create(unittest.TestCase):
     """Test create method
     """
-    def test_by_one_dict_rectangle(self):
+    def test_by_one_dict_rectangle_new(self):
         """Test for rectangle dict
         """
         rec1 = {'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0}
@@ -422,13 +432,103 @@ class test_create(unittest.TestCase):
         dict2 = rec_obj.to_dictionary()
         self.assertEqual(dict1, dict2)
 
-    def test_by_one_dict_rectangle_str(self):
+    def test_by_one_dict_rectangle_same_obj(self):
         """Test for rectangle dict
         """
         rec1 = {'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0}
         newly_created = Rectangle.create(**rec1)
         strr = str(newly_created)
-        self.assertEqual("djf", strr)
+        self.assertEqual("[Rectangle] (1) 1/0 - 10/9", strr)
+
+    def test_by_one_dict_square_new(self):
+        """Test for square dict
+        """
+        square1 = {'size': 10, 'id': 1, 'x': 1, 'y': 0}
+        rec_obj = Square(10, 1, 0, 1)
+        dict1 = Square.create(**square1).to_dictionary()
+        dict2 = rec_obj.to_dictionary()
+        self.assertEqual(dict1, dict2)
+
+    def test_by_one_dict_square_str_same_obj(self):
+        """Test for rectangle dict
+        """
+        square1 = {'size': 10, 'id': 1, 'x': 1, 'y': 0}
+        newly_created = Square.create(**square1)
+        strr = str(newly_created)
+        self.assertEqual("[Square] (1) 1/0 - 10", strr)
+
+    def test_square_will_not_equal(self):
+        """test_square_will_not_equal
+        """
+        square1 = {'size': 10, 'id': 1, 'x': 1, 'y': 0}
+        rec_obj = Square(10, 1, 0, 1)
+        new_obj = Square.create(**square1)
+        self.assertNotEqual(rec_obj, new_obj)
+
+    def test_rectangle_will_not_equal(self):
+        """test_square_will_not_equal
+        """
+        rec = {'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0}
+        rec_obj = Square(10, 1, 0, 1)
+        new_obj = Square.create(**rec)
+        self.assertNotEqual(rec_obj, new_obj)
+
+    def test_square_will_not_is(self):
+        """test_square_will_not_equal
+        """
+        square1 = {'size': 10, 'id': 1, 'x': 1, 'y': 0}
+        rec_obj = Square(10, 1, 0, 1)
+        new_obj = Square.create(**square1)
+        self.assertIsNot(rec_obj, new_obj)
+
+    def test_rectangle_will_not_is(self):
+        """test_square_will_not_equal
+        """
+        rec = {'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0}
+        rec_obj = Square(10, 1, 0, 1)
+        new_obj = Square.create(**rec)
+        self.assertIsNot(rec_obj, new_obj)
+
+
+class test_load_from_file(unittest.TestCase):
+    def test_square_normal_input(self):
+        """test_square_normal_input
+        """
+        List = Square.load_from_file()
+        self.assertTrue(type(List) is list)
+
+    def test_square_removed_file(self):
+        os.remove('Square.json')
+        List = Square.load_from_file()
+        self.assertTrue(type(List) is list and List is [])
+
+    def test_rectangle_normal_input(self):
+        """test_square_normal_input
+        """
+        List = Rectangle.load_from_file()
+        self.assertTrue(type(List) is list)
+
+    def test_rectangle_removed_file(self):
+        """test_rectangle_removed_file
+        """
+        os.remove('Rectangle.json')
+        List = Rectangle.load_from_file()
+        self.assertTrue(type(List) is list and List is [])
+
+    def test_for_objs_itself_rec(self):
+        """test_for_objs_itself_rec
+        """
+        List = Rectangle.load_from_file()
+        for obj in List:
+            self.assertEqual(type(obj), Rectangle)
+
+    def test_for_objs_itself_square(self):
+        """test_for_objs_itself_rec
+        """
+        List = Square.load_from_file()
+        for obj in List:
+            self.assertEqual(type(obj), Square)
+
 
 if __name__ == '__main__':
     unittest.TestCase()
