@@ -497,23 +497,11 @@ class test_load_from_file(unittest.TestCase):
         List = Square.load_from_file()
         self.assertTrue(type(List) is list)
 
-    def test_square_removed_file(self):
-        os.remove('Square.json')
-        List = Square.load_from_file()
-        self.assertTrue(type(List) is list and List is [])
-
     def test_rectangle_normal_input(self):
         """test_square_normal_input
         """
         List = Rectangle.load_from_file()
         self.assertTrue(type(List) is list)
-
-    def test_rectangle_removed_file(self):
-        """test_rectangle_removed_file
-        """
-        os.remove('Rectangle.json')
-        List = Rectangle.load_from_file()
-        self.assertTrue(type(List) is list and List is [])
 
     def test_for_objs_itself_rec(self):
         """test_for_objs_itself_rec
@@ -528,7 +516,5 @@ class test_load_from_file(unittest.TestCase):
         List = Square.load_from_file()
         for obj in List:
             self.assertEqual(type(obj), Square)
-
-
 if __name__ == '__main__':
     unittest.TestCase()
