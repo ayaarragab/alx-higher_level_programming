@@ -4,6 +4,7 @@ This module contains the base class
 """
 
 import json
+import csv
 
 
 class Base:
@@ -60,7 +61,8 @@ class Base:
         """that returns an instance with all attributes already set
         """
         obj = cls(1, 1)
-        obj.update(**dictionary)
+        if dictionary:
+            obj.update(**dictionary)
         return (obj)
 
     @classmethod
@@ -83,3 +85,48 @@ class Base:
             # astreisk for **dictionary in function def
             newlist.append(obj)
         return newlist
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        writes the csv string representation of list_objs to a file
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode='w', encoding='utf-8', newline="") as file:
+            if list_objs is None:
+                pass
+            else:
+                if cls.__name__ == 'Rectangle':
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                else:
+                    fieldnames = ['id', 'size', 'x', 'y']
+                list_dicts = [obj.to_dictionary() for obj in list_objs]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in list_dicts:
+                    writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        returns a list of instances
+        """
+        data = []
+
+        with open(f'{cls.__name__}.csv', newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if cls.__name__ == 'Rectangle':
+                    obj = cls.create(
+                        width=int(row['width']),
+                        height=int(row['height']),
+                        x=int(row["x"]), y=int(row["y"]),
+                        id=int(row["id"])
+                    )
+                else:
+                    obj = cls.create(
+                        size=int(row['size']),
+                        x=int(row["x"]), y=int(row["y"]), id=int(row["id"])
+                    )
+                data.append(obj)
+        return data
