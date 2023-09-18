@@ -10,7 +10,7 @@ class Base:
     """
     Base class
     """
-    __nb_objects = 0
+    __nb_objects = 0  # Tell sara
 
     def __init__(self, id=None):
         """
