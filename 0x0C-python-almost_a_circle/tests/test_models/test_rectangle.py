@@ -622,5 +622,6 @@ class test_to_dictionary(unittest.TestCase):
         recdict = Rectangle(1, 2, 4, 5, 6).to_dictionary()
         dicc = {'width': 1, 'height': 2, 'x': 4, 'y': 5, 'id': 6}
         self.assertEqual(recdict.items(), dicc.items())
+
 if __name__ == '__main__':
     unittest.TestCase()
