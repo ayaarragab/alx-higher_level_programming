@@ -422,5 +422,13 @@ class test_create(unittest.TestCase):
         dict2 = rec_obj.to_dictionary()
         self.assertEqual(dict1, dict2)
 
+    def test_by_one_dict_rectangle_str(self):
+        """Test for rectangle dict
+        """
+        rec1 = {'height': 9, 'width': 10, 'id': 1, 'x': 1, 'y': 0}
+        newly_created = Rectangle.create(**rec1)
+        strr = str(newly_created)
+        self.assertEqual("djf", strr)
+
 if __name__ == '__main__':
     unittest.TestCase()
