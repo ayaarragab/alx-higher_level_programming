@@ -5,6 +5,7 @@ This module contains the base class
 
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -130,3 +131,24 @@ class Base:
                     )
                 data.append(obj)
         return data
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw rectangles and squares"""
+        if list_squares and list_squares != []:
+            for square in list_squares:
+                sq = turtle.Turtle()
+                sq.speed(1)
+                for i in range(4):
+                    sq.forward(square.size)
+                    sq.left(90)
+        if list_rectangles and list_rectangles != []:
+            for rectangle in list_rectangles:
+                rec = turtle.Turtle()
+                rec.speed(1)
+                for _ in range(2):
+                    rec.forward(rectangle.width)
+                    rec.left(90)
+                    rec.forward(rectangle.height)
+                    rec.left(90)
+        turtle.done()
