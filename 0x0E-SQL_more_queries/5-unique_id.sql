@@ -2,5 +2,4 @@
 CREATE TABLE IF NOT EXISTS unique_id(
     id INT NOT NULl DEFAULT 1 UNIQUE,
     name VARCHAR(256),
-    PRIMARY KEY()
 );
