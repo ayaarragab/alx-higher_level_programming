@@ -10,5 +10,5 @@ if (Number.isInteger(parseInt(args[2]))) {
     console.log(x);
   }
 } else {
-  console.log('Missing number size');
+  console.log('Missing size');
 }
