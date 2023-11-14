@@ -7,5 +7,5 @@ if (Number.isInteger(parseInt(args[2]))) {
     console.log('C is fun');
   }
 } else {
-    console.log('Missing number of occurrences');
+  console.log('Missing number of occurrences');
 }
