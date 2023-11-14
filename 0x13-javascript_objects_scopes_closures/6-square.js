@@ -6,7 +6,8 @@ module.exports = class Square extends Rectangle {
   constructor (size) {
     super(size, size);
   }
-  charPrint(c) {
+
+  charPrint (c) {
     if (c) {
       let pattern = '';
       for (let index = 0; index < this.width; index++) {
@@ -16,7 +17,7 @@ module.exports = class Square extends Rectangle {
         console.log(pattern);
       }
     } else {
-        super.print();
+      super.print();
     }
   }
 };
