@@ -4,7 +4,7 @@ const args = process.argv;
 
 if (!args[3]) {
   console.log(NaN);
-}else {
+} else {
   add(args[2], args[3]);
 }
 function add (a, b) {
