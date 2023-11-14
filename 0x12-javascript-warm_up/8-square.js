@@ -1,8 +1,8 @@
 #!/usr/bin/node
 
 const args = process.argv;
-let x = '';
 if (Number.isInteger(parseInt(args[2]))) {
+  let x = '';
   for (let index = 0; index < parseInt(args[2]); index++) {
     x += 'X';
   }
