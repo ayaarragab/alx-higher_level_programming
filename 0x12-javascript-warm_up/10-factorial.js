@@ -6,6 +6,4 @@ function factorial (a) {
   }
   return a * factorial(a - 1);
 }
-if (parseInt(args[2])) {
-  console.log(factorial(parseInt(args[2])));
-}
+console.log(factorial(parseInt(args[2])));
