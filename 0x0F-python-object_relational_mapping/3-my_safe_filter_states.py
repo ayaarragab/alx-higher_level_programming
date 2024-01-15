@@ -1,27 +1,19 @@
 #!/usr/bin/python3
-"""
-a script that lists all states with a name
-starting with N (upper N) from the database hbtn_0e_0_usa:
-"""
+"""Lists states"""
+
 import MySQLdb
-import sys
-if __name__ == '__main__':
-    connection = MySQLdb.connect(
-                user=sys.argv[1],
-                password=sys.argv[2],
-                database=sys.argv[3],
-                host="localhost",
-                port=3306)
-    cursor = connection.cursor()
-    string = """SELECT * FROM states WHERE states.name = '{}'
-             ORDER BY states.id ASC"""
-    formatted = string.format((sys.argv[4],))
-    if sys.argv[4]:
-        cursor.execute(formatted)
-        query_rows = cursor.fetchall()
-        if query_rows:
-            for row in query_rows:
-                if row:
-                    print(row)
-    cursor.close()
-    connection.close()
+from sys import argv
+
+if __name__ == "__main__":
+    conn = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                           passwd=argv[2], db=argv[3], charset="utf8")
+    cur = conn.cursor()
+    query = """
+SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY states.id ASC"""
+    query = query.format((argv[4],))
+    cur.execute(query)
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    cur.close()
+    conn.close()
