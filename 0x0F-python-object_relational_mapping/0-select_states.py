@@ -13,7 +13,9 @@ if __name__ == '__main__':
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
     query_rows = cursor.fetchall()
-    for row in query_rows:
-        print(row)
+    if query_rows:
+        for row in query_rows:
+            if row:
+                print(row)
     cursor.close()
     connection.close()
