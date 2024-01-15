@@ -18,6 +18,6 @@ if __name__ == '__main__':
     if query_rows:
         for row in query_rows:
             if row and row[1] == sys.argv[4]:
-                    print(row)
+                print(row)
     cursor.close()
     connection.close()
