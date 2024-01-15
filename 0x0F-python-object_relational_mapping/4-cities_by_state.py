@@ -13,7 +13,9 @@ if __name__ == '__main__':
                 host="localhost",
                 port=3306)
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM cities ORDER BY cities.id ASC")
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities "
+                   "JOIN states ON cities.state_id = states.id "
+                   "ORDER BY cities.id ASC")
     query_rows = cursor.fetchall()
     if query_rows:
         for row in query_rows:
