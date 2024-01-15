@@ -11,7 +11,7 @@ if __name__ == '__main__':
                 host="localhost",
                 port=3306)
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
     query_rows = cursor.fetchall()
     if query_rows:
         for row in query_rows:
