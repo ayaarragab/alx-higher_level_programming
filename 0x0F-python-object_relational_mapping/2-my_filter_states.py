@@ -13,12 +13,13 @@ if __name__ == '__main__':
                 host="localhost",
                 port=3306)
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM states WHERE states.name = '{}' \
-                   ORDER BY states.id ASC".format(sys.argv[4]))
-    query_rows = cursor.fetchall()
-    if query_rows:
-        for row in query_rows:
-            if row:
-                print(row)
+    if sys.argv[4]:
+        cursor.execute("SELECT * FROM states WHERE states.name = '{}' \
+               ORDER BY states.id ASC".format(sys.argv[4]))
+        query_rows = cursor.fetchall()
+        if query_rows:
+            for row in query_rows:
+                if row:
+                    print(row)
     cursor.close()
     connection.close()
