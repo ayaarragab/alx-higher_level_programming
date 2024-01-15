@@ -13,11 +13,12 @@ if __name__ == '__main__':
                 host="localhost",
                 port=3306)
     cursor = connection.cursor()
-    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities "
-                   "JOIN states ON cities.state_id = states.id "
-                   "WHERE states.name = %s"
-                   "ORDER BY cities.id ASC",
-                   (sys.argv[4],))
+    if sys.arg[4]:
+            cursor.execute("SELECT cities.id, cities.name, states.name FROM cities "
+                           "JOIN states ON cities.state_id = states.id "
+                           "WHERE states.name = %s"
+                           "ORDER BY cities.id ASC",
+                           (sys.argv[4],))
     query_rows = cursor.fetchall()
     if query_rows:
         for i, element in enumerate(query_rows):
