@@ -19,12 +19,12 @@ if __name__ == '__main__':
                        "WHERE states.name = %s"
                        "ORDER BY cities.id ASC",
                        (sys.argv[4],))
-    query_rows = cursor.fetchall()
-    if query_rows:
-        for i, element in enumerate(query_rows):
-            if i != len(query_rows) - 1:
-                print(element[1], end=", ")
-            else:
-                print(element[1])
+        query_rows = cursor.fetchall()
+        if query_rows:
+            for i, element in enumerate(query_rows):
+                if i != len(query_rows) - 1:
+                    print(element[1], end=", ")
+                else:
+                    print(element[1])
     cursor.close()
     connection.close()
