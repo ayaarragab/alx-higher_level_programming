@@ -22,4 +22,6 @@ if __name__ == '__main__':
     myQuery = session.query(State)
     if myQuery.first():
         print(f'{myQuery.first().id}: {myQuery.first().name}')
+    else:
+        print('Nothing')
     session.close()
