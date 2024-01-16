@@ -20,5 +20,6 @@ if __name__ == '__main__':
     # Object that its role to make a session
     session = Session()
     myQuery = session.query(State)
-    print(f'{myQuery.first().id}: {myQuery.first().name}')
+    if myQuery.first():
+        print(f'{myQuery.first().id}: {myQuery.first().name}')
     session.close()
