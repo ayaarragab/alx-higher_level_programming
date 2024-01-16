@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""Start link class to table in database 
+"""Start link class to table in database
 """
 import sys
 
 from model_state import Base, State
 
 from sqlalchemy import Column, Integer, String, ForeignKey
+
 
 class City(Base):
     __tablename__ = 'cities'
