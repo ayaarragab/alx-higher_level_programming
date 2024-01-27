@@ -3,6 +3,7 @@
 find peak
 """
 
+
 def find_peak(list_of_integers):
     """
     a function that finds
@@ -22,4 +23,3 @@ def find_peak(list_of_integers):
             high = mid
 
     return list_of_integers[low]
-
