@@ -13,4 +13,4 @@ if __name__ == '__main__':
     if int(res.status_code) >= 400:
         print(f'Error code: {res.status_code}')
     else:
-        print('Index')
+        print(res.text)
