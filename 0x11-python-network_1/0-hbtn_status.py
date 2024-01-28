@@ -8,7 +8,6 @@ https://alx-intranet.hbtn.io/status
 if __name__ == '__main__':
     from urllib import request
 
-
     with request.urlopen('https://alx-intranet.hbtn.io/status') as response:
         con = response.read()
         print('Body response:')
