@@ -12,3 +12,5 @@ if __name__ == '__main__':
     res = requests.get(argv[1])
     if int(res.status_code) >= 400:
         print(f'Error code: {res.status_code}')
+    else:
+        print('Index')
