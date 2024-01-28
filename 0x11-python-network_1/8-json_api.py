@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     try:
         json_data = resp.json()
-        if json_data and json_data != "":
+        if json_data and json_data != {}:
             print(f'[{json_data["id"]}] {json_data["name"]}')
         else:
             print("No result")
