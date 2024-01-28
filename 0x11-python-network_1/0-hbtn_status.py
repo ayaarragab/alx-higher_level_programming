@@ -10,7 +10,8 @@ if __name__ == '__main__':
 
 
     with request.urlopen('https://alx-intranet.hbtn.io/status') as response:
+        con = response.read()
         print('Body response:')
-        print(f"\t- type: {type(response.read())}")
-        print(f"\t- content: {response.read()}")
-        print("\t- utf8 content: " + response.read().decode("utf-8"))
+        print(f"\t- type: {type(con)}")
+        print(f"\t- content: {con}")
+        print("\t- utf8 content: " + con.decode("utf-8"))
