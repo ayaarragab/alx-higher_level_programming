@@ -10,10 +10,8 @@ if __name__ == '__main__':
     from sys import argv
     import requests
 
-    if argv[1]:
-        params = {'q': argv[1]}
-    else:
-        params = {'q': ""}
+    char = "" if len(argv) == 1 else argv[1]
+    params = {"q": char}
     resp = requests.post('http://0.0.0.0:5000/search_user', data=params)
 
     try:
