@@ -20,13 +20,13 @@ if __name__ == '__main__':
     import requests
 
     url = 'https://api.github.com/repos/{}/{}/commits'.format(argv[2], argv[1])
-    autho = (argv[1], argv[2])
-    for i in range(10):
-        response = requests.get(url, auth=autho)
-        if response.status_code == 200:
-            sha = response.json()[i].get('sha')
-            commit = response.json()[i].get('commit')
-            autherName = commit.get('author').get('name')
-            print(f'{sha}: {autherName}')
-        else:
-            print(None)
+    try:
+        for i in range(10):
+            response = requests.get(url)
+            if response.status_code == 200:
+                sha = response.json()[i].get('sha')
+                commit = response.json()[i].get('commit')
+                autherName = commit.get('author').get('name')
+                print(f'{sha}: {autherName}')
+    except IndexError:
+        pass
