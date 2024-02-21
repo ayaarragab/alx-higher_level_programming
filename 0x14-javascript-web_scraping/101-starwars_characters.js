@@ -10,7 +10,7 @@ request(url, function (error, _, body) {
   }
   const films = JSON.parse(body).results;
   for (const film of films) {
-    if (film.episode_id === Number(filmId)) {
+    if (film.episode_id == filmId) {
       for (const character of film.characters) {
         request(character, function (error, response, body) {
           if (error) {
