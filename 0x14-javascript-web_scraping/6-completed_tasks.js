@@ -15,3 +15,4 @@ request(args[0], function(error, response, body){
         empty[i] = JSON.parse(body)[i].userId;
         }    
 });
+console.log(empty);
