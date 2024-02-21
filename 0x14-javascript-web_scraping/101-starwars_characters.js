@@ -2,7 +2,7 @@
 // Write a script that prints all characters of a Star Wars movie:
 const request = require('request');
 const url = 'https://swapi-api.hbtn.io/api/films/';
-filmId = process.argv.slice(2)[0];
+const filmId = process.argv.slice(2)[0];
 
 request(url, function (error, _, body) {
   if (error) {
