@@ -1,17 +1,23 @@
 #!/usr/bin/node
 // This script lists all tasks that are completed
 
-request = require("request");
-args = process.argv.slice(2);
-empty = {};
+const request = require("request");
+const args = process.argv.slice(2);
+let empty = {};
 
 request(args[0], function(error, _, body){
     if (error) {
         console.log(error);
     }
-    for (let i = 0; i < JSON.parse(body).length; i++) 
-        if (JSON.parse(body)[i].completed == 'true') {
-        empty[i] = JSON.parse(body)[i].userId;
+    const tasks = JSON.parse(body);
+    for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].completed === true) {
+            if (empty[tasks[i].userId]) {
+                empty[tasks[i].userId]++;
+            } else {
+                empty[tasks[i].userId] = 1;
+            }
+        }    
     }
     console.log(empty);
 });
