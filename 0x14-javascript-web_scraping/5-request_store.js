@@ -10,16 +10,16 @@ You must use the module request
 const request = require('request');
 const url = process.argv.slice(2)[0];
 
-requests(url, function (error, response, body) {
-    if (error) {
-        console.error(error);
+request(url, function (error, response, body) {
+  if (error) {
+    console.error(error);
+  }
+  const fs = require('fs');
+  const filePath = process.argv.slice(2)[1];
+  fs.writeFile(filePath, body, 'utf8', function (err) {
+    if (err) {
+      console.error(err);
     }
-    const fs = require('fs');
-    const filePath = process.argv.slice(2)[1];
-    fs.writeFile(filePath, body, 'utf8', function (err) {
-        if (err) {
-            console.error(err);
-        }
-    }
-    )
+  }
+  );
 });
